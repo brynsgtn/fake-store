@@ -1,33 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useState, useEffect } from 'react'
+import "./../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import './App.css'
+import NavBar from './Components/NavBar'
+import Footer from './Components/Footer'
+import Landing from './Components/Landing'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    fetch('https://fakestoreapi.com/products')
+      .then(res => res.json())
+      .then(data => {
+        console.log(data);
+        setPhotos(data);
+      })
+      .catch(error => console.error('Error fetching data:', error));
+  }, []);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+    <NavBar />
+    <Landing />
+    <Footer />
+    {/* <div>
+      {photos.map(photo => (
+        <div key={photo.id}>
+          <h2>{photo.title}</h2>
+          <img src={photo.image} alt={photo.title} /> 
+          <p>{photo.price}</p>
+          <p>{photo.description}</p>
+        </div>
+      ))}
+    </div> */}
     </>
   )
 }

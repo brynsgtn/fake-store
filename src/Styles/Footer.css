@@ -1,0 +1,20 @@
+/* Footer.css */
+.footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+}
+
+
+
+.icon-link {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+.icon-link svg {
+    vertical-align: text-bottom;
+    margin-left: 2px;
+}
+
