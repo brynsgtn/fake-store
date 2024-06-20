@@ -1,0 +1,39 @@
+/* CardStyles.css */
+.card {
+    flex: 1 1 18rem; /* Adjusts the card size based on available space */
+    max-width: 18rem;
+    display: flex;
+    flex-direction: column;
+    margin: 1rem; /* Adds spacing between cards */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+  
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+  
+.card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%; /* Ensures the card body takes full height */
+}
+  
+.card-img-top {
+    height: 250px; /* Adjust height as needed */
+    object-fit: contain;
+    padding: 1rem;
+    border-radius: 15px; /* Adds border radius to the image */
+}
+
+.card-title{
+    font-size: 1rem;
+    font-weight: 800;
+    text-align: center;
+}
+
+.btn-outline-secondary {
+    width: 60%; /* Adjust width to make the button narrower */
+    align-self: center; /* Center the button horizontally */
+}
