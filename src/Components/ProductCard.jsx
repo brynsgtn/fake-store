@@ -1,22 +1,21 @@
-import Button from 'react-bootstrap/Button';
+
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/esm/Button';
 import './../Styles/Card.css'
 
-export default function ProductCard({id, title, image, price, description}) {
+
+export default function ProductCard({ id, title, image, price, description }) {
+  
   return (
-    <>
-    
-      <Card className="card" key={id}>
-        <Card.Img variant="top" src={image} alt={title} className="img-fluid"/>
-        <Card.Body className="card-body">
-          <Card.Title className="card-title">{title}</Card.Title>
-          <Card.Text className="text-center">${price}</Card.Text>
-          <Button variant="outline-secondary" size="sm">View Product</Button>
-        </Card.Body>
-      </Card>
-
-    </>
-
+    <Card className="card" key={id}>
+      <Card.Img variant="top" src={image} alt={title} className="card-img-top p-5" />
+      <Card.Title className="card-title px-3 text-center fs-6 fw-bold">{title}</Card.Title>
+      <Card.Text className="text-center">$ {price}</Card.Text>
+      <div className="card-overlay">
+        <div className="overlay-content">
+          <Button className='btn btn-outline-light'>View Product</Button>
+        </div>
+      </div>
+    </Card>
   );
 }
-

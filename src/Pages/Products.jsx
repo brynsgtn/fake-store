@@ -2,12 +2,11 @@ import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import ProductList from "../Components/ProductList";
 
-export default function Products() {
+export default function Products({addToCart}) {
 
     return (
         <>
-            <NavBar />
-            <ProductList />
+            <ProductList addToCart={addToCart}/>
             <Footer />
         </>
     )

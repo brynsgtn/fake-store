@@ -1,7 +1,40 @@
 
+.product-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
+}
 .product-container {
     padding: 1rem;
+    max-width: 1024px;
+
+    
 }
 
+.product-view-container {
+    min-height: 100vh;
+    width: 100%;
+}
 
+@media (min-width: 768px) {
+    .product-view-container {
+        width: 70%;
+    }
+    .product-image {
+
+        width: 250px;
+    }
+}
+
+.spinner-container {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-image {
+    height: auto;
+    width: 200px;
+}

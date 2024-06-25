@@ -1,0 +1,66 @@
+.cart-container {
+    min-height: 100vh;
+}
+
+.product-image {
+    height: auto;
+    width: 200px;
+}
+
+.custom-btn {
+    all: unset; /* Reset all styles */
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit text color */
+    background-color: transparent; /* Ensure no background color */
+    border: none; /* Remove border */
+    padding: 0; /* Remove padding */
+    cursor: pointer; /* Pointer cursor */
+    outline: none; /* Remove outline */
+    transition: transform 0.2s ease-in-out; /* Animation transition */
+    user-select: none;
+    filter: none; /* Add this to remove any filter effects */
+}
+
+.custom-btn:hover,
+.custom-btn:focus,
+.custom-btn:active {
+    transform: scale(1.1); /* Scale up on hover, focus, and active */
+    color: inherit; /* Keep the color unchanged */
+    background-color: transparent; /* Ensure no background color */
+    box-shadow: none!important; /* Remove any box-shadow */
+    outline: none!important; /* Remove outline */
+}
+
+.btn-link.custom-btn {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-link.custom-btn:focus {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.btn-link.custom-btn:active {
+  background-color: transparent;
+  background-image: none;
+  border-color: transparent;
+  box-shadow: none;
+  outline: none;
+}
+
+.custom-btn svg {
+  fill: inherit; /* Inherit the parent's text color */
+}
+
+.custom-btn:hover svg,
+.custom-btn:focus svg,
+.custom-btn:active svg {
+  fill: inherit; /* Keep the fill color unchanged on hover, focus, and active */
+}
