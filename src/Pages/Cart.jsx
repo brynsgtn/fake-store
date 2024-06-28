@@ -2,10 +2,12 @@ import Footer from "../Components/Footer";
 import NavBar from "../Components/NavBar";
 import './../Styles/Cart.css'
 import Button from 'react-bootstrap/Button';
+import { ProductContext } from "../App";
+import { useContext } from 'react';
 
 
-export default function Cart({cartItems}) {
-
+export default function Cart() {
+    const { cartItems } = useContext(ProductContext);
     return (
         <>
                 <div className="cart-container d-flex flex-column align-items-center">
@@ -34,7 +36,7 @@ export default function Cart({cartItems}) {
                     </div>
                     <div className="d-flex flex-column justify-content-center align-items-center">
                         <div>
-                            <p className="fs-3 fw-bold">Total:</p>
+                            <p className="fs-3 fw-bold">Total in cart: {cartItems.length}</p>
                         </div>
                         <div className="mt-3">
                             <Button className="btn" variant="dark">Proceed to Checkout</Button>

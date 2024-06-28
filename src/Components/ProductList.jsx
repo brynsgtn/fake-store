@@ -1,19 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ProductCard from "./ProductCard";
 import './../Styles/ProductList.css';
 import Header from "./Header";
-import ProductView from "./ProductView";
 import Spinner from 'react-bootstrap/Spinner';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 
+import { ProductContext } from "../App";
 
-export default function ProductList({addToCart, cartItems}) {
+export default function ProductList({ addToCart, cartItems }) {
     const [products, setProducts] = useState([]);
-    const [selectedProduct, setSelectedProduct] = useState(null);
-    const [isProductView, setIsProductView] = useState(false);
-    
+    const { setSelectedProduct } = useContext(ProductContext);
+    const { selectedProduct } = useContext(ProductContext);
+const navigate = useNavigate();
+
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
@@ -27,62 +29,56 @@ export default function ProductList({addToCart, cartItems}) {
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
+    console.log(`Cart Items: ${cartItems} ProductList`);
+
+    const handleClick = (e, product) => {
+        
+        setSelectedProduct(prevProduct => ({
+            ...prevProduct,
+            ...product // Update the selected product with new properties
+        }));
+
+
+    };
     
-    const handleClick = (e, id) => {
-        const selected = products.find(product => product.id === id);
-        setSelectedProduct(selected);
-        setIsProductView(true);
-    }
-    
-    console.log(selectedProduct)
+    console.log(selectedProduct);
+
     return (
         <>
             {products.length === 0 ? (
                 <div className="spinner-container">
-                <div>
-                <Spinner animation="grow" variant="secondary" />
-                <Spinner animation="grow" variant="secondary" />
-                <Spinner animation="grow" variant="secondary" />
-                <Spinner animation="grow" variant="secondary" />
-                <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="secondary" />
+                    <Spinner animation="grow" variant="secondary" />
                 </div>
-               
-                </div>
-                
             ) : (
-                isProductView && selectedProduct ? (
-                   <ProductView
-                        selectedProduct={selectedProduct}
-                        addToCart ={addToCart}
-                        cartItems={cartItems}
-
-                        />
-                ) : (
-                    <div className="product-flex">
+                <div className="product-flex">
                     <div className="product-container">
                         <Container className="my-4">
                             <Header text="Our Products" />
                             <Row className="justify-content-center p-4">
                                 {products.map(product => (
-                                    <Col key={product.id} onClick={(e) => handleClick(e, product.id)} xs={12} sm={6} md={6} lg={4} className="d-flex align-items-stretch">
-                                        <ProductCard
-                                            id={product.id}
-                                            title={product.title}
-                                            image={product.image}
-                                            price={product.price}
-                                            description={product.description}
-                                            product={product}
-                                        />
+                                    <Col key={product.id} xs={12} sm={6} md={6} lg={4} className="d-flex align-items-stretch" onClick={(e) => handleClick(e, product)}>
+                                    <Link to={`/products/${product.id}`} className="text-decoration-none" onClick={() => handleClick(product)}>
+                                            <ProductCard
+                                                id={product.id}
+                                                title={product.title}
+                                                image={product.image}
+                                                price={product.price}
+                                                description={product.description}
+                                                product={product}
+                                                
+                                            />
+                                    </Link>
                                     </Col>
                                 ))}
                             </Row>
                         </Container>
                     </div>
-                    </div>
-
-                )
+                </div>
             )}
         </>
     );
 }
-

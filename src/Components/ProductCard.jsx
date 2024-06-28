@@ -2,10 +2,11 @@
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/esm/Button';
 import './../Styles/Card.css'
+import { Link } from 'react-router-dom';
 
 
-export default function ProductCard({ id, title, image, price, description }) {
-  
+export default function ProductCard({ id, title, image, price}) {
+
   return (
     <Card className="card" key={id}>
       <Card.Img variant="top" src={image} alt={title} className="card-img-top p-5" />
