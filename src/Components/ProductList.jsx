@@ -10,7 +10,7 @@ import { Link, useParams, useNavigate } from 'react-router-dom';
 
 import { ProductContext } from "../App";
 
-export default function ProductList({ addToCart, cartItems }) {
+export default function ProductList() {
     const [products, setProducts] = useState([]);
     const { setSelectedProduct } = useContext(ProductContext);
     const { selectedProduct } = useContext(ProductContext);
@@ -22,17 +22,17 @@ const navigate = useNavigate();
             .then(data => {
                 console.log(data);
                 // Adding a delay of 1 second before setting the products
-                setTimeout(() => {
+           
                     setProducts(data);
-                }, 1000);
+     
             })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
 
-    console.log(`Cart Items: ${cartItems} ProductList`);
+
 
     const handleClick = (e, product) => {
-        
+        // e.preventDefault(); // P
         setSelectedProduct(prevProduct => ({
             ...prevProduct,
             ...product // Update the selected product with new properties

@@ -7,48 +7,33 @@ import Home from './Pages/Home';
 import Products from './Pages/Products';
 import ProductView from "./Components/ProductView";
 import {BrowserRouter as Router, Routes, Route, useParams} from 'react-router-dom'
-import { useState, createContext } from "react";
+import { useState, createContext,useEffect } from "react";
 
 export const ProductContext = createContext();
 
 
+const cartFromLocalStorage = JSON.parse(localStorage.getItem("cartItems")) || [];
+const totalQuantityFromLocalStorage = JSON.parse(localStorage.getItem("totalQuantity")) || 0;
 function App() {
 
-  const [cartItems, setCartItems] = useState([0]);
+  const [cartItems, setCartItems] = useState(cartFromLocalStorage);
   const [selectedProduct, setSelectedProduct] = useState(null);
+  const [totalQuantity, setTotalQuantity] = useState(totalQuantityFromLocalStorage);
+  const totalItem = cartItems.reduce((acc, { quantity }) => acc + quantity, 0)
+    useEffect(() => {
+        // Update totalQuantity whenever cartItems changes
+        setTotalQuantity(totalItem);
+    }, [cartItems]);
 
-  // const addToCart = (current) => {
-  //   if (cartItems.some((product) => current.id === product.id)) {
-  //     setCartItems(
-  //       cartItems.map((product) =>
-  //         product.id === current.id
-  //           ? { ...product, qty: product.qty + current.qty }
-  //           : product
-  //       )
-  //     );
-  //     return;
-  //   }
+  useEffect(() => {
+    localStorage.setItem("cartItems", JSON.stringify(cartItems))
+  }, [cartItems]);
 
-  //   setCartItems(cartItems.concat(current));
-  // };
+  useEffect(() => {
+    localStorage.setItem("totalQuantity", JSON.stringify(totalQuantity))
+  }, [totalQuantity]);
 
-
-  // const increaseProductQty = (current) => {
-  //   setCartItems(
-  //     cartItems.map((product) =>
-  //       product.id === current.id ? { ...product, qty: product.qty + 1 } : product
-  //     )
-  //   );
-  // };
-
-  // const decreaseProductQty = (current) => {
-  //   if (current.qty === 1) return;
-  //   setCartItems(
-  //     cartItems.map((product) =>
-  //       product.id === current.id ? { ...product, qty: product.qty - 1 } : product
-  //     )
-  //   );
-  // };
+ 
 
   // const deleteProduct = (current) => {
   //   setCartItems(cartItems.filter((product) => product.id !== current.id));
@@ -56,7 +41,7 @@ function App() {
 
   return (
     <>
-        <ProductContext.Provider value={{selectedProduct, setSelectedProduct, cartItems}}>
+        <ProductContext.Provider value={{selectedProduct, setSelectedProduct, cartItems, setCartItems, totalQuantity, setTotalQuantity}}>
           <Router>
             <NavBar count={cartItems.length}/>
               <Routes>
