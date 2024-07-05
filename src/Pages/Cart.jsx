@@ -34,6 +34,7 @@ export default function Cart() {
             }
           }).then(() => {
             setTimeout(() => {
+                setCartItems([]);
                 navigate('/'); // Navigate to home page after confirming purchase
             }, 500)
           });
@@ -68,27 +69,48 @@ export default function Cart() {
             product.id === item.id && product.quantity > 0 ? { ...product, quantity: product.quantity - 1 } : product
         ));
     };
+
+    const goToShop = () => {
+        navigate(`/products`);
+    }
     return (
         <>
-            <Header text="Your Cart" />
-            <div className="cart-container d-flex flex-column align-items-center">
-                {cartItems.length === 0 ? (
-                    <p>No items in cart.</p>
+            <div className="d-flex justify-content-center" style={{ minHeight: '100vh', backgroundColor: '#f8f9fa' }}>
+            <div className="product my-4">
+            {cartItems.length > 0 && <Header text="Your Cart" />}
+            <div className="container-fluid d-flex justify-content-center align-items-center">
+            <div className="w-100 text-center">
+            {cartItems.length === 0 ? (
+                <>  
+     
+                        <div className="w-100">
+                        <p className="empty-cart-message">No items in cart.</p>
+                        <Button className="btn" variant="dark" onClick={goToShop} style={{ width: '100%' }}>Shop Now</Button>
+                        </div>     
+   
+                        
+                        
+                 
+        
+        
+                    
+                </>
+                   
                 ) : (
                     <>
                         {cartItems.map((item) => (
-                            <div className="d-lg-flex justify-content-center align-items-center w-75 my-5 border-bottom" key={item.id}>
+                            <div className="d-lg-flex justify-content-center align-items-center  w-100 my-5 border-bottom bg-white" key={item.id}>
                                 <div className="text-center">
-                                    <img src={item.image} alt="" className="product-image" />
+                                    <img src={item.image} alt="" className="product-image p-3" />
+                                </div>
+                                <div className="mx-3 flex-grow-1">
+                                    <p className="fw-bold mt-3 mt-md-0 fs-5 ">{item.title}</p>
                                 </div>
                                 <div className="mx-3">
-                                    <p className="fw-bold">{item.title}</p>
+                                    <p className="fw-bolder">${item.price.toFixed(2)}</p>
                                 </div>
-                                <div className="mx-3">
-                                    <p className="fw-bolder">${item.price}</p>
-                                </div>
-                                <div className="mx-3">
-                                    <p>Quantity:
+                                <div className="mx-3 ">
+                                    <p className="d-lg-flex justify-content-center align-items-center">Quantity:
                                         <Button variant="dark" className="rounded-circle ms-2" onClick={() => minusClick(item)} disabled={item.quantity === 0}>-</Button>
                                         <span className="mx-2">{item.quantity}</span>
                                         <Button variant="dark" className="rounded-circle" onClick={() => addClick(item)}>+</Button>
@@ -103,14 +125,19 @@ export default function Cart() {
                         ))}
                         <div className="d-flex flex-column justify-content-center align-items-center">
                             <div>
-                                <p className="fs-3 fw-bold">Total: ${total.toFixed(2)}</p>
+                                <p className="fs-1 fw-bold">Total: ${total.toFixed(2)}</p>
                             </div>
-                            <div className="mt-3">
+                            <div className="my-3">
                                 <Button className="btn" variant="dark" onClick={checkOut}>Proceed to Checkout</Button>
                             </div>
                         </div>
                     </>
                 )}
+            </div>
+     
+            </div>
+            </div>
+        
             </div>
             <Footer />
         </>

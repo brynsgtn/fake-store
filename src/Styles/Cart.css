@@ -1,5 +1,9 @@
-.cart-container {
-    min-height: 100vh;
+.product {
+  max-width: 1024px; /* Adjust max-width as needed */
+  align-items: center;
+  justify-content: center;
+  color: #333; /* Font color */
+  font-weight: 500; /* Font weight */
 }
 
 .product-image {
@@ -64,3 +68,11 @@
 .custom-btn:active svg {
   fill: inherit; /* Keep the fill color unchanged on hover, focus, and active */
 }
+
+.empty-cart-message {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: gray;
+  margin-top: 30px;
+}
+

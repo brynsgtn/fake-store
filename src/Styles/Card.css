@@ -1,13 +1,20 @@
 .card {
     position: relative;
     flex: 1 1 18rem; /* Adjusts the card size based on available space */
-    max-width: 18rem;
+    width: 17rem;
+    height: 24rem;
     display: flex;
     flex-direction: column;
     margin: 1rem; /* Adds spacing between cards */
     transition: transform 0.2s ease, box-shadow 0.2s ease;
     border-radius: 15px; /* Adds border radius to the card */
     overflow: hidden; /* Ensures content does not overflow */
+}
+
+@media (max-width: 320px) {
+    .card {
+        width: 14rem;
+    }
 }
 
 .card:hover {

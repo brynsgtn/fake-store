@@ -21,10 +21,10 @@ const navigate = useNavigate();
             .then(res => res.json())
             .then(data => {
                 console.log(data);
-                // Adding a delay of 1 second before setting the products
-           
-                    setProducts(data);
-     
+                // Adding a delay of 2 second before setting the products
+                    setTimeout(() => {
+                        setProducts(data);
+                    }, 2000);
             })
             .catch(error => console.error('Error fetching data:', error));
     }, []);
@@ -56,7 +56,7 @@ const navigate = useNavigate();
             ) : (
                 <div className="product-flex">
                     <div className="product-container">
-                        <Container className="my-4">
+                        <Container className="m-4">
                             <Header text="Our Products" />
                             <Row className="justify-content-center p-4">
                                 {products.map(product => (

@@ -25,8 +25,8 @@ export default function NavBar() {
             src={logo}
             width="40"
             height="40"
-          />{' '}
-          Fake Store
+          />{'  '}
+          ShopSmart
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
@@ -34,7 +34,7 @@ export default function NavBar() {
             <Nav.Link href="/" className='mx-3'>Home</Nav.Link>
             <Nav.Link href="/products" className='mx-3'>Products</Nav.Link>
             <Nav.Link href="/cart" className='mx-3'>
-              <span className="fa-stack fa-1x has-badge" data-count={totalQuantity}>
+              <span className={`fa-1x has-badge ${totalQuantity !== 0 ? 'fa-stack' : ''}`}data-count={totalQuantity}>
                 <i className="fa fa-shopping-cart fa-stack-1.5x cart"></i>
               </span>
             </Nav.Link>
