@@ -1,22 +1,17 @@
-// NavBar.js
 import React, { useContext, useEffect } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import 'font-awesome/css/font-awesome.min.css';
 import './../Styles/NavBar.css';
 import { ProductContext } from "../App";
 import logo from "../assets/logo.png";
+
+
+
 export default function NavBar() {
+  
   const { totalQuantity } = useContext(ProductContext);
 
-
-  useEffect(() => {
-    // This function will run when the component is first loaded
-    console.log('Page has been refreshed or loaded for the first time');
-  }, []);
-
-  return (
-
-    
+  return (    
     <Navbar expand="lg" className="bg-dark navbar-dark navbar">
       <Container>
         <Navbar.Brand href="/">
@@ -25,6 +20,7 @@ export default function NavBar() {
             src={logo}
             width="40"
             height="40"
+            className="rounded-circle"
           />{'  '}
           ShopSmart
         </Navbar.Brand>
@@ -43,4 +39,4 @@ export default function NavBar() {
       </Container>
     </Navbar>
   );
-}
+};

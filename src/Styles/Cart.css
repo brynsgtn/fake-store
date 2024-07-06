@@ -1,3 +1,8 @@
+* {
+  user-select: none;
+  box-sizing: border-box;
+}
+
 .product {
   max-width: 1024px; /* Adjust max-width as needed */
   align-items: center;
@@ -70,7 +75,7 @@
 }
 
 .empty-cart-message {
-  font-size: 1.5rem;
+  font-size: 2rem;
   font-weight: bold;
   color: gray;
   margin-top: 30px;

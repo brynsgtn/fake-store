@@ -1,4 +1,8 @@
 
+* {
+    user-select: none;
+    box-sizing: border-box;
+}
 
 .header{
     font-size: 2rem;

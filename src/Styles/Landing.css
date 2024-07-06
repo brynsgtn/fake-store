@@ -1,3 +1,7 @@
+* {
+    user-select: none;
+    box-sizing: border-box;
+}
 
 .background-container {
     background-image: url('./landing.jpg');

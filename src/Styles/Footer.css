@@ -1,4 +1,10 @@
-/* Footer.css */
+
+
+* {
+    user-select: none;
+    box-sizing: border-box;
+}
+
 .footer {
     width: 100%;
     z-index: 1;

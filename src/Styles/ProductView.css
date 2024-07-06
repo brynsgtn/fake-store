@@ -1,9 +1,14 @@
+* {
+    user-select: none;
+    box-sizing: border-box;
+}
+
 .product {
-    max-width: 1024px; /* Adjust max-width as needed */
-    margin: 1rem auto; /* Add margin for spacing */
+    max-width: 1024px;
+    margin: 1rem auto;
     align-items: center;
     justify-content: center;
-    color: #333; /* Font color */
-    font-weight: 500; /* Font weight */
+    color: #333; 
+    font-weight: 500;
 }
 

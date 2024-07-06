@@ -1,8 +1,13 @@
+* {
+    user-select: none;
+    box-sizing: border-box;
+}
+
 .product-flex {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f8f9fa; /* Gray background color */
+    background-color: #f8f9fa;
     color: #333; /* Font color */
     font-weight: 500; /* Font weight */
 }
