@@ -1,10 +1,11 @@
+
 * {
     user-select: none;
     box-sizing: border-box;
 }
 
 .background-container {
-    background-image: url('./landing.jpg');
+    background-image: url('../assets/landing.jpg');
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
