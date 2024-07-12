@@ -142,7 +142,7 @@ export default function Cart() {
                                                                                             </div>
                                                                                         )
                                                                                 )
-                                                                };
+                                                                }
                                                                 <div className="d-flex flex-column justify-content-center align-items-center">
                                                                     <div>
                                                                         <p className="fs-1 fw-bold">Total: ${total.toFixed(2)}</p>
